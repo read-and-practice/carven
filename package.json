@@ -1,0 +1,22 @@
+{
+  "name": "carven",
+  "version": "0.0.0",
+  "description": "Like an ancient man carved in a cave.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/read-and-practice/carven.git"
+  },
+  "keywords": [
+    "canvas"
+  ],
+  "author": "zglit",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/read-and-practice/carven/issues"
+  },
+  "homepage": "https://github.com/read-and-practice/carven#readme"
+}
