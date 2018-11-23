@@ -4,7 +4,8 @@
   "description": "Like an ancient man carved in a cave.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tsc -w"
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/read-and-practice/carven/issues"
   },
-  "homepage": "https://github.com/read-and-practice/carven#readme"
+  "homepage": "https://github.com/read-and-practice/carven#readme",
+  "devDependencies": {
+    "typescript": "^3.1.6"
+  }
 }
