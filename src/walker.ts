@@ -1,15 +1,15 @@
-/// <reference path="./utils.ts" />
+import Utils from './utils';
 
 const canvasWidth = 500;
 const canvasHeight = 500;
 
-class Walker {
+export default class Walker {
   constructor(context: CanvasRenderingContext2D) {
     this.ctx = context;
     this.w = 2;
     this.h = 2;
     this.x = canvasWidth / 2;
-    this.y = canvasWidth / 2;
+    this.y = canvasHeight / 2;
     this.step = 10;
   }
 
