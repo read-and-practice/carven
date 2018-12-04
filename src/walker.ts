@@ -23,23 +23,12 @@ export default class Walker {
   }
 
   public move(): void {
-    const randomInt = Utils.getRandomInt(4);
-    switch(randomInt) {
-      case 0:
-        this.x += this.step;
-        break;
-      case 1:
-        this.x -= this.step;
-        break;
-      case 2:
-        this.y += this.step;
-        break;
-      case 3:
-        this.y -= this.step;
-        break;
-      default:
-        ;
-    }
+    const step = Utils.randomRange(0, 10);
+    const stepX = Utils.randomRange(-step, step);
+    const stepY = Utils.randomRange(-step, step);
+
+    this.x += stepX;
+    this.y += stepY;
   }
 
   private w: number;
