@@ -1,8 +1,5 @@
 import Walker from '../obj/walker';
-
-interface IWorld {
-  start: () => void;
-}
+import { IWorld } from './world';
 
 export default class WalkerWorld implements IWorld {
   constructor(context: CanvasRenderingContext2D) {
@@ -27,5 +24,4 @@ export default class WalkerWorld implements IWorld {
 
   private ctx: CanvasRenderingContext2D;
   private walker: Walker;
-
 }
