@@ -1,15 +1,16 @@
-import Walker from './walker';
-import DomUtils from './domUtils';
+// import Walker from './walker';
+// import DomUtils from './utils/domUtils';
+import WalkerWorld from './world/walkerWorld';
 
 const canvas: HTMLCanvasElement = document.querySelector('#canvas');
 const ctx = canvas.getContext('2d');
-const walker = new Walker(ctx);
+// const walker = new Walker(ctx);
 
-canvas.onmousemove = (ev: MouseEvent) => {
-  const pos: Pos2d = DomUtils.GetOffset(ev);
-  console.log(`x:${pos.x}, y:${pos.y}`);
-}
+// canvas.onmousemove = (ev: MouseEvent) => {
+//   const pos: Pos2d = DomUtils.GetOffset(ev);
+//   console.log(`x:${pos.x}, y:${pos.y}`);
+// }
 
-setInterval(() => {
-  walker.draw();
-}, 100);
+const world = new WalkerWorld(ctx);
+world.start();
+

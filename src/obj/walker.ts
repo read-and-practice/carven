@@ -1,4 +1,4 @@
-import Utils from './utils';
+import Utils from '../utils/utils';
 
 const canvasWidth = 500;
 const canvasHeight = 500;
@@ -10,7 +10,6 @@ export default class Walker {
     this.h = 2;
     this.x = canvasWidth / 2;
     this.y = canvasHeight / 2;
-    this.step = 10;
   }
 
   public draw(): void {
@@ -35,6 +34,5 @@ export default class Walker {
   private h: number;
   private x: number;
   private y: number;
-  private step: number;
   private ctx: CanvasRenderingContext2D;
 }
