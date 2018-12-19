@@ -1,10 +1,10 @@
 export default class Utils {
-  public static randomInt(max: number): number {
+  static randomInt(max: number): number {
     const n = Math.random();
     return Math.floor(n * max);
   }
 
-  public static randomRange(start: number, end: number): number {
+  static randomRange(start: number, end: number): number {
     if (end < start) {
       throw new Error('invalid range');
     }
@@ -13,7 +13,7 @@ export default class Utils {
     return start + r * range;
   }
 
-  public static montecarlo(): number {
+  static montecarlo(): number {
     while(true) {
       const r1 = Math.random();
       const probability = r1;

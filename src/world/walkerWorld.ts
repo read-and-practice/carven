@@ -9,7 +9,7 @@ export default class WalkerWorld implements IWorld {
     this.ctx = context;
   }
 
-  public start(): void {
+  start(): void {
     this.setup();
     
     setInterval(() => {
