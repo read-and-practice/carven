@@ -1,24 +1,24 @@
-interface IVector {
+interface IVector<T> {
   // add vectors
-  add: (v: IVector) => void;
+  add: (v: T) => T;
 
   // subtract vectors
-  sub: (v: IVector) => void;
+  sub: (v: T) => T;
 
   // scale the vector with multiplication
-  // mult: (s: number) => void;
+  mult: (s: number) => T;
 
   // scale the vector with division
-  // div: (s: number) => void;
+  div: (s: number) => T;
 
   // calculate the magnitude of a vector
-  // mag: () => number;
+  mag: () => number;
 
   // set the megnitude of a vector
   // setMag: (m: number) => void;
 
   // normalize the vector to a unit length of 1
-  // normalize: () => void;
+  normalize: () => T;
 
   // limit the magnitude of a vector
   // limit: (l: number) => void;
@@ -51,7 +51,7 @@ interface IVector {
   // random3D: () => Vector;
 }
 
-export class Vector2D implements IVector {
+export class Vector2D implements IVector<Vector2D> {
   x: number;
   y: number;
 
@@ -60,13 +60,49 @@ export class Vector2D implements IVector {
     this.y = y;
   }
   
-  add(v: Vector2D): void {
+  add(v: Vector2D): this {
     this.x += v.x;
     this.y += v.y;
+    return this;
   }
 
-  sub(v: Vector2D): void {
+  sub(v: Vector2D): this {
     this.x -= v.x;
     this.y -= v.y;
+    return this;
   }
+
+  mult(n: number): this {
+    this.x *= n;
+    this.y *= n;
+    return this;
+  }
+
+  div(n: number): this {
+    if (n === 0) {
+      throw new Error();
+    }
+    this.x /= n;
+    this.y /= n;
+    return this;
+  }
+
+  mag(): number {
+    return Math.sqrt(this.x * this.x + this.y * this.y);
+  }
+
+  clone(): Vector2D {
+    const cloned = new Vector2D(this.x, this.y);
+    return cloned;
+  }
+
+  normalize(): this {
+    const m = this.mag();
+    if (m > 0) {
+      this.div(m);
+    }
+    return this;
+  }
+  
+
 }
