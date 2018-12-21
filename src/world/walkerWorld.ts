@@ -1,11 +1,7 @@
 import Walker from '../obj/walker';
-import { IWorld } from './world';
+import World from './world';
 
-export default class WalkerWorld implements IWorld {
-  constructor(context: CanvasRenderingContext2D) {
-    this.ctx = context;
-  }
-
+export default class WalkerWorld extends World {
   start(): void {
     this.setup();
     
@@ -14,14 +10,13 @@ export default class WalkerWorld implements IWorld {
     }, 100);
   }
 
-  private setup(): void {
+  protected setup(): void {
     this.walker = new Walker(this.ctx);
   }
 
-  private draw(): void {
+  protected draw(): void {
     this.walker.draw();
   }
 
-  private ctx: CanvasRenderingContext2D;
   private walker: Walker;
 }
