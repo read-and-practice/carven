@@ -1,57 +1,28 @@
 import { Vector2D } from '../core/vector';
 import World from './world';
+import BounceBall from '../obj/bounceBall';
 
 export default class BounceBallWorld extends World {
   start() {
     this.setup();
-
     setInterval(() => this.draw(), 10);
   }
 
   protected setup(): void {
-    this.pos = this.center.clone();
-    this.velocity = new Vector2D(10, 11);
-    this.ellipse = new Ellipse(this.ctx);
-    this.r1 = 20;
+    this.ball1 = new BounceBall(this.ctx);
+    this.ball2 = new BounceBall(this.ctx);
+    this.ball1.setup(this.center.clone(), new Vector2D(8, 12), 20, this.canvasWidth, this.canvasHeight);
+    this.ball2.setup(this.center.clone(), new Vector2D(3, 7), 10, this.canvasWidth, this.canvasHeight);
   }
 
   protected draw(): void {
-    // this.clear();
-    this.ellipse.draw(this.pos.x, this.pos.y, this.r1, 0);
-    this.move();
+    this.clear();
+    this.ball1.update();
+    this.ball1.draw();
+    this.ball2.update();
+    this.ball2.draw();
   }
 
-  private move(): void {
-    this.pos.add(this.velocity);
-    this.bounceIfNeeded();
-  }
-
-  private bounceIfNeeded(): void {
-    if (this.pos.x <= 0 || this.canvasWidth <= this.pos.x) {
-      this.velocity.x *= -1;
-    }
-
-    if (this.pos.y <= 0 || this.canvasHeight <= this.pos.y) {
-      this.velocity.y *= -1;
-    }
-  }
-
-  private r1: number;
-  private pos: Vector2D;
-  private velocity: Vector2D;
-  private ellipse: Ellipse;
-}
-
-class Ellipse {
-  constructor(ctx: CanvasRenderingContext2D) {
-    this.ctx = ctx;
-  }
-
-  draw(x:number, y:number, r1: number, r2: number): void {
-    this.ctx.beginPath();
-    this.ctx.arc(x, y, r1, 0, Math.PI*2); // 绘制
-    this.ctx.stroke();
-  }
-
-  private ctx: CanvasRenderingContext2D;
+  private ball1: BounceBall;
+  private ball2: BounceBall;
 }
