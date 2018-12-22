@@ -1,3 +1,5 @@
+import Utils from '../utils/utils';
+
 interface IVector<T> {
   // add vectors
   add: (v: T) => T;
@@ -21,7 +23,7 @@ interface IVector<T> {
   normalize: () => T;
 
   // limit the magnitude of a vector
-  // limit: (l: number) => void;
+  limit: (l: number) => T;
 
   // the heading of a vector expressed as an angle
   // heading2D: () => number;
@@ -44,7 +46,7 @@ interface IVector<T> {
   // the cross product of two vectors (only relevant in three dimensions)
   // cross: (v: Vector) => Vector;
 
-  // make a random 2D vector
+  // make a random 2D vector of length 1
   // random2D: () => Vector;
 
   // make a random 3D vector
@@ -58,6 +60,11 @@ export class Vector2D implements IVector<Vector2D> {
   constructor(x: number, y: number) {
     this.x = x;
     this.y = y;
+  }
+
+  static random(): Vector2D {
+    const r = new Vector2D(Utils.randomRange(-1,1), Utils.randomRange(-1,1));
+    return r.normalize();
   }
   
   add(v: Vector2D): this {
@@ -104,5 +111,11 @@ export class Vector2D implements IVector<Vector2D> {
     return this;
   }
   
+  limit(max: number): this {
+    if (this.mag() > max) {
+      this.normalize().mult(max);
+    }
+    return this;
+  }
 
 }
